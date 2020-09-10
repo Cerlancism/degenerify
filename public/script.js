@@ -13,7 +13,7 @@
             const inputElem = /** @type {HTMLInputElement} */ (document.querySelector("#inputUrl"))
             const targetUrl = inputElem.value
             query.set("url", targetUrl)
-            location.replace("./?" + query.toString())
+            location = "./?" + query.toString()
         })
         
         return
