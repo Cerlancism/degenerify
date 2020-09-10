@@ -18,68 +18,15 @@
 </head>
 
 <body>
+    <form>
+        <div class="form-example">
+            <label for="name" >Enter url to degenerity: </label>
+            <input id="inputUrl" size="50" type="text" name="url"required>
+            <input id="submitBtn" type="submit" value="Go!">
+        </div>
+    </form>
     <iframe id="content" frameborder="0" width=""></iframe>
-    <script>
-        const query = new URLSearchParams(location.search)
-
-        var frame = /** @type {HTMLIFrameElement} */ (document.querySelector("#content"));
-
-        frame.src = "./" + query.get("url")
-        
-        loadanime()
-
-        var firstLoaded = false;
-
-        setFrameSize()
-
-        window.addEventListener("resize", setFrameSize)
-
-        frame.addEventListener("load", function ()
-        {
-            if (firstLoaded)
-            {
-                loadanime()
-            }
-            if (!firstLoaded)
-            {
-                firstLoaded = true
-            }
-            frame.contentWindow.document.body.querySelectorAll("*").forEach(x => 
-            {
-                x.style.backgroundColor = "rgba(255,255,255,0.3)"
-            })
-            frame.contentWindow.document.body.style.backgroundColor = "rgba(255,255,255,0.5)"
-        })
-
-        function setFrameSize()
-        {
-            frame.width = window.innerWidth
-            frame.height = window.innerHeight
-        }
-
-        function loadanime()
-        {
-            jQuery.ajax
-                ({
-                    method: "GET",
-                    url: "https://yande.re/post.json?limit=1&tags=score:%3E=200+rating:s+order:random",
-                    dataType: "json",
-                    success: loadbackgroundsuccess
-                });
-        }
-
-        function loadbackgroundsuccess(data, status, xhr)
-        {
-            model = data[0];
-            console.log(model);
-            jQuery("body").css("background-image", "url('" + "./" + model.sample_url + "')");
-            var link = frame.contentWindow.document.createElement("a")
-            link.href = "https://yande.re/post/show/" + model.id
-            link.innerHTML = "Image source: " + link.href
-            link.target = "_blank"
-            frame.contentWindow.document.body.appendChild(link)
-        }
-    </script>
+    <script src="./script.js"></script>
 </body>
 
 </html>
