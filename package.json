@@ -1,6 +1,6 @@
 {
-  "name": "CorsProxy",
-  "description": "Simple Cors Proxy",
+  "name": "degenerify",
+  "description": "A NodeJS server, also dubbed as a CORS Proxy and serve a page to degerify a target webpage.",
   "version": "0.0.1",
   "scripts": {
     "start": "node server.js"
